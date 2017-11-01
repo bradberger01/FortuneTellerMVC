@@ -45,6 +45,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -81,6 +89,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -149,9 +159,44 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AgesController.cs" />
+    <Compile Include="Controllers\BirthMonthsController.cs" />
+    <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\FavoriteColorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NumberOfSiblingsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Age.cs">
+      <DependentUpon>NewFortuentTellerInput.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BirthMonth.cs">
+      <DependentUpon>NewFortuentTellerInput.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Customer.cs">
+      <DependentUpon>NewFortuentTellerInput.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FavoriteColor.cs">
+      <DependentUpon>NewFortuentTellerInput.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NewFortuentTellerInput.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NewFortuentTellerInput.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NewFortuentTellerInput.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NewFortuentTellerInput.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NewFortuentTellerInput.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NewFortuentTellerInput.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NumberOfSibling.cs">
+      <DependentUpon>NewFortuentTellerInput.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -162,10 +207,36 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\FortuneTellerInput.tt">
+      <DependentUpon>FortuneTellerInput.edmx</DependentUpon>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FortuneTellerInput.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\NewFortuentTellerInput.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NewFortuentTellerInput.edmx</DependentUpon>
+      <LastGenOutput>NewFortuentTellerInput.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\NewFortuentTellerInput.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NewFortuentTellerInput.edmx</DependentUpon>
+      <LastGenOutput>NewFortuentTellerInput.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="Models\FortuneTellerInput.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FortuneTellerInput.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Models\NewFortuentTellerInput.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NewFortuentTellerInput.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\NewFortuentTellerInput.edmx.diagram">
+      <DependentUpon>NewFortuentTellerInput.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -194,10 +265,34 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
+    <Content Include="Views\Ages\Create.cshtml" />
+    <Content Include="Views\Ages\Delete.cshtml" />
+    <Content Include="Views\Ages\Details.cshtml" />
+    <Content Include="Views\Ages\Edit.cshtml" />
+    <Content Include="Views\Ages\Index.cshtml" />
+    <Content Include="Views\BirthMonths\Create.cshtml" />
+    <Content Include="Views\BirthMonths\Delete.cshtml" />
+    <Content Include="Views\BirthMonths\Details.cshtml" />
+    <Content Include="Views\BirthMonths\Edit.cshtml" />
+    <Content Include="Views\BirthMonths\Index.cshtml" />
+    <Content Include="Views\Customers\Create.cshtml" />
+    <Content Include="Views\Customers\Delete.cshtml" />
+    <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Customers\Edit.cshtml" />
+    <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\FavoriteColors\Create.cshtml" />
+    <Content Include="Views\FavoriteColors\Delete.cshtml" />
+    <Content Include="Views\FavoriteColors\Details.cshtml" />
+    <Content Include="Views\FavoriteColors\Edit.cshtml" />
+    <Content Include="Views\FavoriteColors\Index.cshtml" />
+    <Content Include="Views\NumberOfSiblings\Create.cshtml" />
+    <Content Include="Views\NumberOfSiblings\Delete.cshtml" />
+    <Content Include="Views\NumberOfSiblings\Details.cshtml" />
+    <Content Include="Views\NumberOfSiblings\Edit.cshtml" />
+    <Content Include="Views\NumberOfSiblings\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -209,6 +304,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

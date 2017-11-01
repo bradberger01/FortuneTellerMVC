@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="71342042bfc94dbe803d3fc23e8b641d" Name="Diagram1">
+        <EntityTypeShape EntityType="NewFortuneTellerInputModel.Age" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewFortuneTellerInputModel.BirthMonth" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewFortuneTellerInputModel.Customer" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewFortuneTellerInputModel.FavoriteColor" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewFortuneTellerInputModel.NumberOfSibling" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <AssociationConnector Association="NewFortuneTellerInputModel.FK_Customer_Age" ManuallyRouted="false" />
+        <AssociationConnector Association="NewFortuneTellerInputModel.FK_Customer_BirthMonth" ManuallyRouted="false" />
+        <AssociationConnector Association="NewFortuneTellerInputModel.FK_Customer_FavoriteColor" ManuallyRouted="false" />
+        <AssociationConnector Association="NewFortuneTellerInputModel.FK_Customer_NumberOfSiblings" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
